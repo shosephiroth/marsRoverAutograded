@@ -11,6 +11,10 @@ jasmine.loadConfig({
   spec_files: [
     "**/*[sS]pec.js"
   ],
+  "helpers": [
+    "helpers/*.js"
+  ],
+  random: false
 });
 
 jasmine.execute();
