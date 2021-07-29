@@ -20,7 +20,7 @@ describe("Message class", function () {
   // test 6
   it("contains a commands array passed into the constructor as 2nd argument", function() {
     let message = new Message('commands');
-    expect(message.value).toEqual('commands');
+    expect(message.value).toEqual(commands);
   })
   
 });
