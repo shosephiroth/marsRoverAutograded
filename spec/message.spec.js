@@ -17,6 +17,11 @@ describe("Message class", function () {
     expect(message.messageType).toEqual('name');
   })
 
+  // test 6
+  it("contains a commands array passed into the constructor as 2nd argument", function() {
+    let message = new Message('commands')
+    expect(message.commands).toEqual('commands');
+  })
   
 });
 
