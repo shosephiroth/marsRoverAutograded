@@ -6,6 +6,9 @@ class Message {
        throw Error("Name required.");
      }
      this.commands = commands;
+     // add in later:
+     // if (!commands) {
+     // throw Error("Command required.");
    }
    
 }
