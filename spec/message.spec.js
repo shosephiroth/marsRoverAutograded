@@ -14,7 +14,7 @@ describe("Message class", function () {
   // test 5
   it("constructor sets name", function () {
     let message = new Message('name');
-    expect(message.messageType).toEqual('name');
+    expect(message.name).toEqual('name');
   })
 
   // test 6
