@@ -19,6 +19,7 @@ console.log(response);
   // test 7
   it("constructer sets position and default values for mode and generatorWatts", function() {
     expect(rover.position).toEqual(98382);
+    expect(rover.generatorWatts).toEqual(110);
   })
 
 });
