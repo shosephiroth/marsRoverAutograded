@@ -8,6 +8,7 @@ class Rover {
    }
 
   receiveMessage(message) {
+    return message;
 
   }
 }
