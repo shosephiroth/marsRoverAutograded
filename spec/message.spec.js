@@ -19,8 +19,12 @@ describe("Message class", function () {
 
   // test 6
   it("contains a commands array passed into the constructor as 2nd argument", function() {
-    let message = new Message('name', 'commands');
-    expect(message.value).toEqual('name', 'commands');
+    // before declare message declare array of commands 
+    let commands = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('STATUS_CHECK')];
+    // can make array 2nd arg for constructor
+
+    let message = new Message('name', commands);
+    //console.log(message.value);
   })
   
 });
