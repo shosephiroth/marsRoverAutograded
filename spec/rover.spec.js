@@ -22,4 +22,9 @@ console.log(response);
     expect(rover.generatorWatts).toEqual(110);
   })
 
+  // test 8
+  it("response returned by receiveMessage contains name of message", function() {
+
+  })
+
 });
