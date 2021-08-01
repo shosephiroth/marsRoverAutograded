@@ -7,7 +7,26 @@ const Command = require('../command.js');
 
 
 describe("Rover class", function() {
+  // I don't know if I need these scoped variables here 
+  let commandsArray1 = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('STATUS_CHECK')];
+  let message = new Message('Test message with two commands', commandsArray1);
+  let rover = new Rover(98382);    // Passes 98382 as the rover's position.
+  let response = rover.receiveMessage(message);
+  console.log(rover);
+  console.log(message);
+  console.log(response);
 
   // 7 tests here!
+  // test 7
+  it("constructer sets position and default values for mode and generatorWatts", function() {
+    expect(rover.position).toEqual(98382);
+    expect(rover.generatorWatts).toEqual(110);
+  })
+
+  // test 8
+  it("response returned by receiveMessage contains name of message", function() {
+    expect(response).toEqual(message.name);
+
+   })
 
 });
