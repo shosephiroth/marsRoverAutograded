@@ -25,6 +25,9 @@ describe("Message class", function () {
 
     let message = new Message('name', commands);
     //console.log(message.value);
+
+    expect(message.commands).toEqual(commands);
+    
   })
   
 });
