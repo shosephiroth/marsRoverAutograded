@@ -26,10 +26,15 @@ describe("Message class", function () {
     let message = new Message('Test message with two commands', commands);
     console.log(message.commands);
 
+
     expect(message.commands).toEqual(commands);
+    // for loop to check the elements in array
+    //currently just prints everything
     for (let i = 0; i < commands.length; i++) {
       console.log(commands[i]);
-      expect(commands[i]).toEqual(commands[i]);
+
+      // checking to see if commands array passed to message object
+      expect(message.commands[i]).toEqual(commands[i]);
     }
     //expect(commands).toContain('MODE_CHANGE');
     //expect(message.commands).toContain('MODE_CHANGE');
