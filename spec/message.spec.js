@@ -27,6 +27,7 @@ describe("Message class", function () {
     //console.log(message.value);
 
     expect(message.commands).toEqual(commands);
+    //expect(message.commands).toEqual(typeof(array));
     
   })
   
