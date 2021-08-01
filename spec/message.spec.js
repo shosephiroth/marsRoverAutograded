@@ -24,9 +24,9 @@ describe("Message class", function () {
     // can make array 2nd arg for constructor
 
     let message = new Message('name', commands);
-    //console.log(message.value);
+    console.log(message.commands);
 
-    expect(message.commands).toEqual(commands);
+    //expect(message.commands).toContain('MODE_CHANGE');
     //expect(message.commands).toEqual(typeof(array));
     
   })
