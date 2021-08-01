@@ -13,8 +13,8 @@ describe("Message class", function () {
 
   // test 5
   it("constructor sets name", function () {
-    let message = new Message('name');
-    expect(message.name).toEqual('name');
+    let message = new Message('Matt');
+    expect(message.name).toEqual('Matt');
   })
 
   // test 6
