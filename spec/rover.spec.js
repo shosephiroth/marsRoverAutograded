@@ -24,7 +24,8 @@ console.log(response);
 
   // test 8
   it("response returned by receiveMessage contains name of message", function() {
+    expect(response).toEqual(message.name);
 
-  })
+   })
 
 });
