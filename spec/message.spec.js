@@ -23,10 +23,14 @@ describe("Message class", function () {
     let commands = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('STATUS_CHECK')];
     // can make array 2nd arg for constructor
 
-    let message = new Message('Test with two commands', commands);
+    let message = new Message('Test message with two commands', commands);
     console.log(message.commands);
 
     expect(message.commands).toEqual(commands);
+    for (let i = 0; i < commands.length; i++) {
+      console.log(commands[i]);
+      expect(commands[i]).toEqual(commands[i]);
+    }
     //expect(commands).toContain('MODE_CHANGE');
     //expect(message.commands).toContain('MODE_CHANGE');
     //expect(message.commands).toEqual((typeof(array));)
