@@ -26,19 +26,32 @@ class Rover {
   }
 
   buildResults(message){
-  // initialize result array
-  // go through each command
-  // check what type of command it is
-  // if command is status check
-      // add this to the result array
-    // {
-    //   completed: true, 
-    //   roverStatus: {
-    //     mode: 'NORMAL', 
-    //     generatorWatts: 110,
-    //     position: 87382098
-    //   }
-    // }
+    // initialize result array
+    let resultArray = [];
+    // go through each command
+    for (let i = 0; i < message.command; i++) {
+      if (message.command === 'STATUS_CHECK') {
+        resultArray.push({
+         completed: true, 
+         roverStatus: {
+           mode: 'NORMAL', 
+           generatorWatts: 110,
+           position: 87382098
+         }
+        )
+      }
+    })
+    // check what type of command it is
+    // if command is status check
+        // add this to the result array
+      // {
+      //   completed: true, 
+      //   roverStatus: {
+      //     mode: 'NORMAL', 
+      //     generatorWatts: 110,
+      //     position: 87382098
+      //   }
+      // }
   }
 }
 
