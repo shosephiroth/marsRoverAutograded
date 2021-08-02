@@ -27,25 +27,25 @@ describe("Rover class", function() {
   // test 8
   it("response returned by receiveMessage contains name of message", function() {
     //expect(response).toEqual(message.name);
-    let command1 = new Command('MOVE', 10000);
-    let command2 = new Command('MODE_CHANGE', 'LOW_POWER');
-    let commandArray = [command1, command2];
-    let message = new Message('thing', commandArray);
-    let rover1 = new Rover(10);
-    let messageReceived = rover1.receiveMessage(message);
+    let command0 = new Command('MOVE', 1248);
+    let command1 = new Command('MODE_CHANGE', 'LOW_POWER');
+    let commandArray = [command0, command1];
+    let message = new Message('message', commandArray);
+    let rover0 = new Rover(273);
+    let messageReceived = rover0.receiveMessage(message);
     expect(messageReceived.message).toEqual(message.name);
 
    })
 
   // test 9
   it("response returned by receiveMessage includes two results if two commands are sent in the message", function() {
-    let command1 = new Command('STATUS_CHECK');
-    let command2 = new Command('MODE_CHANGE', 'LOW_POWER');
-    let commandArray = [command1, command2];
-    let message = new Message('thing', commandArray);
-    let rover2 = new Rover(10);
-    let commandArray2 = rover2.receiveMessage(message);
-    expect(commandArray2.results.length).toEqual(2);
+    let command0 = new Command('STATUS_CHECK');
+    let command1 = new Command('MODE_CHANGE', 'LOW_POWER');
+    let commandArray0 = [command0, command1];
+    let message = new Message('message', commandArray0);
+    let rover1 = new Rover(10);
+    let commandArray1 = rover1.receiveMessage(message);
+    expect(commandArray1.results.length).toEqual(2);
   });
 
   // test 10
