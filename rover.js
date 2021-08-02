@@ -30,17 +30,21 @@ class Rover {
     let resultArray = [];
     // go through each command
     for (let i = 0; i < message.command; i++) {
-      if (message.command === 'STATUS_CHECK') {
-        resultArray.push({
-         completed: true, 
-         roverStatus: {
-           mode: 'NORMAL', 
-           generatorWatts: 110,
-           position: 87382098
-         }
-        )
-      }
-    })
+      if (message.commands[i].commandType === 'STATUS_CHECK') {
+        response.results.push({
+          completed: true,
+          roverStatus: {
+            mode: this.mode,
+            generatorWatts: this.generatorWatts,
+            position: this.position
+          }
+        });
+    } else if (message.commands[i].commandType === 'MODE_CHANGE') {
+      this.mode = message.commands[i].value;
+      response.results.push({
+        completed: true
+      });
+    }
     // check what type of command it is
     // if command is status check
         // add this to the result array
