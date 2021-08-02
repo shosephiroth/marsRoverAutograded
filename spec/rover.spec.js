@@ -21,12 +21,72 @@ describe("Rover class", function() {
   it("constructer sets position and default values for mode and generatorWatts", function() {
     expect(rover.position).toEqual(98382);
     expect(rover.generatorWatts).toEqual(110);
+    
   })
 
   // test 8
   it("response returned by receiveMessage contains name of message", function() {
-    expect(response).toEqual(message.name);
+    //expect(response).toEqual(message.name);
+    let command1 = new Command('MOVE', 10000);
+    let command2 = new Command('MODE_CHANGE', 'LOW_POWER');
+    let commandArray = [command1, command2];
+    let message = new Message('thing', commandArray);
+    let rover1 = new Rover(10);
+    let messageReceived = rover1.receiveMessage(message);
+    expect(messageReceived.message).toEqual(message.name);
 
    })
+
+  // test 9
+  it("response returned by receiveMessage includes two results if two commands are sent in the message", function() {
+    let command1 = new Command('STATUS_CHECK');
+    let command2 = new Command('MODE_CHANGE', 'LOW_POWER');
+    let commandArray = [command1, command2];
+    let message = new Message('thing', commandArray);
+    let rover2 = new Rover(10);
+    let commandArray2 = rover2.receiveMessage(message);
+    expect(commandArray2.results.length).toEqual(2);
+  });
+
+  // test 10
+  it("responds correctly to status check command", function() {
+    let command1 = new Command('STATUS_CHECK');
+    let commandArray = [command1];
+    let message = new Message('thing', commandArray);
+    let rover3 = new Rover(10);
+    let command = rover3.receiveMessage(message);
+    expect(command.results).toContain(jasmine.objectContaining({completed: true, roverStatus: {mode: 'NORMAL', generatorWatts: 110, position: 10}}));
+  });
+
+  // test 11 
+  it("responds correctly to mode change command", function() {
+    let command1 = new Command('MODE_CHANGE', 'LOW_POWER');
+    let commandArray = [command1];
+    let message = new Message('thing', commandArray);
+    let rover3 = new Rover(10);
+    let command = rover3.receiveMessage(message);
+    expect(command.results).toContain(jasmine.objectContaining({completed: true}));
+  });
+
+  // test 12
+  it("responds with false completed value when attempting to move in LOW_POWER mode", function() {
+    let command1 = new Command('MODE_CHANGE', 'LOW_POWER');
+    let command2 = new Command('MOVE', 10000)
+    let commandArray = [command1, command2];
+    let message = new Message('thing', commandArray);
+    let rover3 = new Rover(10);
+    let command = rover3.receiveMessage(message);
+    expect(command.results).toContain(jasmine.objectContaining({completed: false}));
+  });
+
+  // test 13
+  it("responds with position for move command", function(){
+    let command2 = new Command('MOVE', 10000)
+    let commandArray = [command2];
+    let message = new Message('thing', commandArray);
+    let rover3 = new Rover(10);
+    let command = rover3.receiveMessage(message);
+    expect(rover3.position).toEqual(command2.value)
+  });
 
 });
