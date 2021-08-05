@@ -12,9 +12,9 @@ describe("Rover class", function() {
   let message = new Message('Test message with two commands', commandsArray1);
   let rover = new Rover(98382);    // Passes 98382 as the rover's position.
   let response = rover.receiveMessage(message);
-  console.log(rover);
-  console.log(message);
-  console.log(response);
+  //console.log(rover);
+  //console.log(message);
+  //console.log(response);
 
   // 7 tests here!
   // test 7
@@ -52,7 +52,7 @@ describe("Rover class", function() {
   it("responds correctly to status check command", function() {
     let command1 = new Command('STATUS_CHECK');
     let commandArray = [command1];
-    let message = new Message('thing', commandArray);
+    let message = new Message('hi', commandArray);
     let rover3 = new Rover(10);
     let command = rover3.receiveMessage(message);
     expect(command.results).toContain(jasmine.objectContaining({completed: true, roverStatus: {mode: 'NORMAL', generatorWatts: 110, position: 10}}));
@@ -62,7 +62,7 @@ describe("Rover class", function() {
   it("responds correctly to mode change command", function() {
     let command1 = new Command('MODE_CHANGE', 'LOW_POWER');
     let commandArray = [command1];
-    let message = new Message('thing', commandArray);
+    let message = new Message('butt', commandArray);
     let rover3 = new Rover(10);
     let command = rover3.receiveMessage(message);
     expect(command.results).toContain(jasmine.objectContaining({completed: true}));
@@ -73,7 +73,7 @@ describe("Rover class", function() {
     let command1 = new Command('MODE_CHANGE', 'LOW_POWER');
     let command2 = new Command('MOVE', 10000)
     let commandArray = [command1, command2];
-    let message = new Message('thing', commandArray);
+    let message = new Message('cheeks', commandArray);
     let rover3 = new Rover(10);
     let command = rover3.receiveMessage(message);
     expect(command.results).toContain(jasmine.objectContaining({completed: false}));
@@ -81,12 +81,12 @@ describe("Rover class", function() {
 
   // test 13
   it("responds with position for move command", function(){
-    let command2 = new Command('MOVE', 10000)
-    let commandArray = [command2];
-    let message = new Message('thing', commandArray);
-    let rover3 = new Rover(10);
+    let command0 = new Command('MOVE', 10000)
+    let commandArray = [command0];
+    let message = new Message('peppermint', commandArray);
+    let rover5 = new Rover(10);
     let command = rover3.receiveMessage(message);
-    expect(rover3.position).toEqual(command2.value)
+    expect(rover3.position).toEqual(command0.value)
   });
 
 });
