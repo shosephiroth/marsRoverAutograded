@@ -8,10 +8,10 @@ const Command = require('../command.js');
 
 describe("Rover class", function() {
   // I don't know if I need these scoped variables here 
-  let commandsArray1 = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('STATUS_CHECK')];
-  let message = new Message('Test message with two commands', commandsArray1);
-  let rover = new Rover(98382);    // Passes 98382 as the rover's position.
-  let response = rover.receiveMessage(message);
+  //let commandsArray1 = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('STATUS_CHECK')];
+  //let message = new Message('Test message with two commands', commandsArray1);
+  //let rover = new Rover(98382);    // Passes 98382 as the rover's position.
+  //let response = rover.receiveMessage(message);
   //console.log(rover);
   //console.log(message);
   //console.log(response);
@@ -19,7 +19,8 @@ describe("Rover class", function() {
   // 7 tests here!
   // test 7
   it("constructer sets position and default values for mode and generatorWatts", function() {
-    expect(rover.position).toEqual(98382);
+    let rover = new Rover(420);
+    expect(rover.position).toEqual(420);
     expect(rover.generatorWatts).toEqual(110);
     
   })
@@ -39,13 +40,10 @@ describe("Rover class", function() {
 
   // test 9
   it("response returned by receiveMessage includes two results if two commands are sent in the message", function() {
-    let command0 = new Command('STATUS_CHECK');
-    let command1 = new Command('MODE_CHANGE', 'LOW_POWER');
-    let commandArray0 = [command0, command1];
-    let message = new Message('message', commandArray0);
-    let rover1 = new Rover(10);
-    let commandArray1 = rover1.receiveMessage(message);
-    expect(commandArray1.results.length).toEqual(2);
+    let rover = new Rover(150);
+    let commandArray1 = [new Command('MOVE', 270), new Command('STATUS_CHECK')];
+    let message = new Message("New commands", commandArray1)
+    expect(commandArray1.length).toEqual(2);
   });
 
   // test 10
@@ -85,8 +83,8 @@ describe("Rover class", function() {
     let commandArray = [command0];
     let message = new Message('peppermint', commandArray);
     let rover5 = new Rover(10);
-    let command = rover3.receiveMessage(message);
-    expect(rover3.position).toEqual(command0.value)
+    let command = rover5.receiveMessage(message);
+    expect(rover5.position).toEqual(command0.value)
   });
 
 });
